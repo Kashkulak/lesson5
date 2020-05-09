@@ -3,12 +3,12 @@ package com.company;
 import java.util.concurrent.CountDownLatch;
 
 public class Uploader extends Thread {
-    private CountDownLatch countDownLatch;
+    private CountDownLatch cdl;
     private int sizeOfFile = 500;
     private int speedOfDownload =20;
 
     public Uploader(CountDownLatch countDownLatch) {
-        this.countDownLatch = countDownLatch;
+        this.cdl = countDownLatch;
         start();
     }
 
@@ -41,6 +41,6 @@ public class Uploader extends Thread {
             System.out.println("Загрузка завершена!");
         } catch (InterruptedException ignored) {
         }
-        countDownLatch.countDown();
+        cdl.countDown();
     }
 }
